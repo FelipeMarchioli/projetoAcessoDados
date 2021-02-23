@@ -45,8 +45,8 @@ def add_dados(request):
 @csrf_exempt
 def get_dados(request, cpf):
     try:
-        dados = Dados.objects.get(cpf=cpf)
-        # serializer = DadosSerializer(dados)
+        dados = Dados.objects.filter(cpf=cpf).values()
+        serializer = DadosSerializer(list(dados))
         return JsonResponse({'dados': dados}, safe=False, status=status.HTTP_200_OK)
     except ObjectDoesNotExist as e:
         return JsonResponse({'error': str(e)}, safe=False, status=status.HTTP_404_NOT_FOUND)
