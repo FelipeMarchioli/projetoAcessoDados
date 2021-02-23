@@ -20,7 +20,7 @@ def DV_maker(v):
 def validate_CPF(value):
 
     if value in EMPTY_VALUES:
-        return u''
+        raise ValidationError(error_messages['invalid'])
     if not value.isdigit():
         value = re.sub("[-\.]", "", value)
     orig_value = value[:]

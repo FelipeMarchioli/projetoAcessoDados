@@ -1,7 +1,8 @@
 from django.urls import path
 
-from . import views
+from acessoDados import views
 
 urlpatterns = [
-    path('', views.index, name='index'),
+    path('criar', views.add_dados, name='add_dados'),
+    path('buscar/<str:cpf>', views.get_dados, name='get_dados'),
 ]
