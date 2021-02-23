@@ -40,13 +40,41 @@ def add_dados(request):
     except Exception:
         return JsonResponse({'error': 'Ocorreu algum erro no nosso servidor. Tente novamente mais tarde.'}, safe=False, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
+@api_view(["GET"])
+@csrf_exempt
+def get_dados_gerais(request, cpf):
+    try:
+        dados = Dados.objects.get(cpf=cpf)
+        serializer = DadosSerializer(dados)
+        return JsonResponse({'dados': serializer.data}, safe=False, status=status.HTTP_200_OK)
+    except ObjectDoesNotExist as e:
+        return JsonResponse({'error': str(e)}, safe=False, status=status.HTTP_404_NOT_FOUND)
 
 @api_view(["GET"])
 @csrf_exempt
-def get_dados(request, cpf):
+def get_dados_dividas(request, cpf):
     try:
-        dados = Dados.objects.filter(cpf=cpf).values()
-        serializer = DadosSerializer(list(dados))
-        return JsonResponse({'dados': dados}, safe=False, status=status.HTTP_200_OK)
+        dados = Dados.objects.get(cpf=cpf)
+        serializer = DadosSerializer(dados)
+
+        id_divida = serializer.data['id_lista_dividas']
+        divida = ListaDividas.objects.get(id=id_divida)
+        serializer_divida = DividasSerializer(divida)
+
+        return JsonResponse({'dados_divida': serializer_divida.data}, safe=False, status=status.HTTP_200_OK)
+    except ObjectDoesNotExist as e:
+        return JsonResponse({'error': str(e)}, safe=False, status=status.HTTP_404_NOT_FOUND)
+
+@api_view(["GET"])
+@csrf_exempt
+def get_dados_bens(request, cpf):
+    try:
+        dados = Dados.objects.get(cpf=cpf)
+        serializer = DadosSerializer(dados)
+        id_bens = serializer.data['id_lista_bens']
+        bens = ListaBens.objects.get(id=id_bens)
+        serializer_bens = BensSerializer(bens)
+
+        return JsonResponse({'dados_bens': serializer_bens.data}, safe=False, status=status.HTTP_200_OK)
     except ObjectDoesNotExist as e:
         return JsonResponse({'error': str(e)}, safe=False, status=status.HTTP_404_NOT_FOUND)

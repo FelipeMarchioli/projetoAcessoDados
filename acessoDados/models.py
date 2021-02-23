@@ -3,7 +3,7 @@ from django.utils import timezone
 
 class ListaDividas(models.Model):
   id = models.AutoField(primary_key=True)
-  dividas = [models.ForeignKey('DadosDividas', on_delete=models.CASCADE)]
+  dividas = [models.ForeignObject(to='DadosDividas', on_delete=models.CASCADE, from_fields=['dividas'], to_fields=['id'])]
 
   def __str__(self):
       return self.id
@@ -19,7 +19,7 @@ class DadosDividas(models.Model):
 
 class ListaBens(models.Model):
   id = models.AutoField(primary_key=True)
-  bens = [models.ForeignKey('DadosBens', on_delete=models.CASCADE)]
+  bens = [models.ForeignObject(to='DadosBens', on_delete=models.CASCADE, from_fields=['bens'], to_fields=['id'])]
 
   def __str__(self):
       return self.id  
