@@ -15,7 +15,6 @@ DEBUG = True
 
 ALLOWED_HOSTS = [
     'https://serene-eyrie-29914.herokuapp.com/',
-    'localhost',
     '127.0.0.1'
 ]
 
