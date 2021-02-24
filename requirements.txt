@@ -7,8 +7,6 @@ certifi==2019.11.28
 chardet==3.0.4
 Click==7.0
 decorator==4.4.2
-distro==1.4.0
-distro-info===0.23ubuntu1
 Django==3.1.7
 djangorestframework==3.12.2
 entrypoints==0.3
