@@ -7,6 +7,7 @@ A stack escolhida foi Python com um dos seus frameworks mais conhecidos, o Djang
 ## Arquitetura Django
 Django utiliza o modelo MTV, que consiste na comunicação entre Models, Templates e Views.
 Sendo a Model responsável pelo mapeamento do banco de dados, a Template responsável por renderizar as páginas ao usuário, utilizando html, css e até javaScript e a camada Views responsável pelas lógicas de negócio.
+
 Abaixo, pode ser observada a estrutura do projeto:
     projetoAcessoDados
     ├── acessoDados
