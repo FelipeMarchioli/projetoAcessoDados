@@ -14,7 +14,7 @@ SECRET_KEY = '2$!vewzm(x7s#w^h8b8*$&9m!+m!vupxg)q3m9pa)1#ub*y%pn'
 DEBUG = True
 
 ALLOWED_HOSTS = [
-    'https://serene-eyrie-29914.herokuapp.com/',
+    'serene-eyrie-29914.herokuapp.com/',
     '127.0.0.1'
 ]
 
