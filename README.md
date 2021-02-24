@@ -1,6 +1,11 @@
 # Projeto Acesso Dados
 Nesse projeto foi elaborada uma ideia inicial de cadastros de vários CPFs afim de consumir uma base de dados para terceiros.
 
+## Deploy
+Foi utilizado o heroku como ferramenta para deploy da aplicação, qualquer alteração realizada no repositório, automaticamente ocorre um novo build do projeto no heroku.
+O projeto pode ser acessado por esta url: https://serene-eyrie-29914.herokuapp.com/admin.
+Para esta versão de teste, pode ser feito o acesso pelo usuário Felipe e senha 6100745.
+
 ## Stack utilizada
 A stack escolhida foi Python com um dos seus frameworks mais conhecidos, o Django.
 
