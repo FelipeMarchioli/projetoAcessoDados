@@ -14,6 +14,7 @@ Django utiliza o modelo MTV, que consiste na comunicação entre Models, Templat
 Sendo a Model responsável pelo mapeamento do banco de dados, a Template responsável por renderizar as páginas ao usuário, utilizando html, css e até javaScript e a camada Views responsável pelas lógicas de negócio.
 
 Abaixo, pode ser observada a estrutura do projeto:
+
     projetoAcessoDados
     ├── acessoDados
     │   ├── __init__.py
