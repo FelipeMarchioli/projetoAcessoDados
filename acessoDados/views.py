@@ -1,13 +1,13 @@
-from rest_framework.decorators import api_view, permission_classes
-from rest_framework.permissions import IsAuthenticated
+import json
+from rest_framework.decorators import api_view
+from rest_framework import status
+from django.contrib.auth.decorators import login_required
 from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 from django.utils.translation import ugettext_lazy as _
+from django.core.exceptions import ObjectDoesNotExist
 from .serializers import DadosSerializer, DividasSerializer, BensSerializer
 from .models import Dados, ListaDividas, ListaBens
-from rest_framework import status
-import json
-from django.core.exceptions import ObjectDoesNotExist
 from acessoDados.validations import validate_CPF
 
 error_messages = {
@@ -16,7 +16,7 @@ error_messages = {
 
 @api_view(["POST"])
 @csrf_exempt
-# @permission_classes([IsAuthenticated])
+@login_required
 def add_dados(request):
     payload = json.loads(request.body)
     try:
@@ -42,6 +42,7 @@ def add_dados(request):
 
 @api_view(["GET"])
 @csrf_exempt
+@login_required
 def get_dados_gerais(request, cpf):
     try:
         dados = Dados.objects.get(cpf=cpf)
@@ -52,6 +53,7 @@ def get_dados_gerais(request, cpf):
 
 @api_view(["GET"])
 @csrf_exempt
+@login_required
 def get_dados_dividas(request, cpf):
     try:
         dados = Dados.objects.get(cpf=cpf)
@@ -67,6 +69,7 @@ def get_dados_dividas(request, cpf):
 
 @api_view(["GET"])
 @csrf_exempt
+@login_required
 def get_dados_bens(request, cpf):
     try:
         dados = Dados.objects.get(cpf=cpf)

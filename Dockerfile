@@ -2,12 +2,12 @@ FROM python:3.8-alpine
 
 ENV PYTHONUNBUFFERED 1
 
-RUN mkdir /code
+RUN mkdir /app
 
-WORKDIR /code
+WORKDIR /app
 
-ADD requirements.txt /code/
+ADD requirements.txt /app/
 
 RUN pip install -r requirements.txt
 
-ADD . /code/
+ADD . /app/
